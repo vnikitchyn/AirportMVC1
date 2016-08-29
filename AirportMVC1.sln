@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirportMVC1", "AirportMVC1\AirportMVC1.csproj", "{693E3EC5-194C-42C1-A0F6-839258847178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirportMVC1.Tests", "AirportMVC1.Tests\AirportMVC1.Tests.csproj", "{A6190D1F-5C84-4A93-A382-0C36B612B5ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{693E3EC5-194C-42C1-A0F6-839258847178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693E3EC5-194C-42C1-A0F6-839258847178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693E3EC5-194C-42C1-A0F6-839258847178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693E3EC5-194C-42C1-A0F6-839258847178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6190D1F-5C84-4A93-A382-0C36B612B5ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6190D1F-5C84-4A93-A382-0C36B612B5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6190D1F-5C84-4A93-A382-0C36B612B5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6190D1F-5C84-4A93-A382-0C36B612B5ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
