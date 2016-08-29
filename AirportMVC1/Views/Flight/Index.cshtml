@@ -1,0 +1,21 @@
+﻿@model List<AirportMVC1.Models.entity.IFlight>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    @{ 
+        foreach (var flight in Model)
+        {
+            <div>@flight.Number</div>
+            <div>@flight.CityFrom</div>
+            <div>@flight.CityTo</div>
+
+        }
+
+    }
+
+</div>
