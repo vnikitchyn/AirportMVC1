@@ -11,8 +11,8 @@ namespace AirportMVC1.Models
     public class AirportContext : DbContext
 
     {
-       public DbSet <TerminalRepository> Terminal { get; set; }
-        public DbSet<FlightRepository> Flight { get; set; }
-        public DbSet<PassengerRepository> Passenger { get; set; }
+       public DbSet <Terminal> Terminal { get; set; }
+        public DbSet<Flight> Flight { get; set; }
+        public DbSet<Passenger> Passenger { get; set; }
     }
 }

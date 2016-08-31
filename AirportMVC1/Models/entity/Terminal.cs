@@ -5,10 +5,10 @@ using System.Web;
 
 namespace AirportMVC1.Models.entity
 {
-    public interface ITerminal
+    public class Terminal
     {
-         int Id { get; set; }
-         string Name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
 
     }
 }

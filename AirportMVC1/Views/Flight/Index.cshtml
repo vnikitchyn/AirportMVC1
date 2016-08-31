@@ -1,21 +1,23 @@
-﻿@model List<AirportMVC1.Models.entity.IFlight>
+﻿@model List<AirportMVC1.Models.entity.Flight>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+<div>@Html.ActionLink("Create new","Create","Flight")</div>
+<div>@Html.ActionLink("Show all", "AllFlights", "Flight")</div>
 
 <div>
     @{ 
         foreach (var flight in Model)
         {
-            <div>@flight.Number</div>
-            <div>@flight.CityFrom</div>
-            <div>@flight.CityTo</div>
-
+            <div>Number: @flight.Number</div>
+            <div>City From: @flight.CityFrom</div>
+            <div>City to: @flight.CityTo</div>
+            <div>Departure: @flight.DepartureTime</div>
+            <div>Arrival: @flight.ArrivalTime</div>
+            <div>@Html.ActionLink("Update", "Update", new {id = flight.Id }) @Html.ActionLink("Delete", "Delete", new { id = flight.Id })</div>         
         }
-
     }
-
 </div>

@@ -177,10 +177,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AirportContext.cs" />
-    <Compile Include="Models\entity\IPassenger.cs" />
-    <Compile Include="Models\entity\ITerminal.cs" />
-    <Compile Include="Models\entity\IFlight.cs" />
+    <Compile Include="Models\entity\Passenger.cs" />
+    <Compile Include="Models\entity\Terminal.cs" />
+    <Compile Include="Models\entity\Flight.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Interfaces\IFlight.cs" />
+    <Compile Include="Models\Interfaces\IPassenger.cs" />
+    <Compile Include="Models\Interfaces\ITerminal.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Repositories\FlightRepository.cs" />
     <Compile Include="Models\Repositories\PassengerRepository.cs" />
@@ -244,6 +247,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Flight\Index.cshtml" />
+    <Content Include="Views\Flight\Create.cshtml" />
+    <Content Include="Views\Flight\AllFlights.cshtml" />
+    <Content Include="Views\Flight\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

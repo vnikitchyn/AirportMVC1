@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using AirportMVC1.Models;
 using AirportMVC1.Models.entity;
+using AirportMVC1.Models.Interfaces;
 
 namespace AirportMVC1.Models.Repositories 
 {
@@ -16,12 +17,7 @@ namespace AirportMVC1.Models.Repositories
             _db = new AirportContext();
             }
 
-        public int Id
-        { get; set; }
 
-
-        public string Name
-        { get; set; }
 
     }
 }

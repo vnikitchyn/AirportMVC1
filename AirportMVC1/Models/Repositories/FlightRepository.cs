@@ -7,6 +7,7 @@ using AirportMVC1.Models.Repositories;
 using AirportMVC1.Models;
 using System.Data.Entity;
 using System.Data.SqlTypes;
+using AirportMVC1.Models.Interfaces;
 
 namespace AirportMVC1.Models.Repositories
 {
@@ -18,78 +19,59 @@ namespace AirportMVC1.Models.Repositories
             _db = new AirportContext();
         }
 
-        public List <IFlight> GetFlights()
+        public List<Flight> Get()
         {
-            var fl = _db.Flight.ToList<IFlight>();
+            var fl = _db.Flight.ToList<Flight>();
             var fl1 = from flight in fl
-                      select new { flight.Number, flight.CityFrom, flight.CityTo}; 
+                      select new { flight.Number, flight.CityFrom, flight.CityTo };
             return fl;
-
         }
 
-        public void AddFlight(FlightRepository flight)
+        public List<Flight> GetFlightsAll()
+        {
+            var fl = _db.Flight.ToList<Flight>();
+            return fl;
+        }
+
+        public void Add(Flight flight)
         {
             _db.Flight.Add(flight);
             _db.SaveChanges();
+
         }
 
-        public void AddFlights(List <FlightRepository> flights)
+        public void AddFlights(List <Flight> flights)
         {
             _db.Flight.AddRange(flights);
             _db.SaveChanges();
         }
 
+        public void Update(Flight flight)
+        {
+            var _flight = _db.Flight.Find(flight.Id);
+            if (_flight !=null)
+            {
+                _db.Entry(_flight).CurrentValues.SetValues(flight);
+                _db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Current entity does not exists");
+            }
+        }
 
+        public void Delete(int id)
+        {
+            var flight = GetFlightById(id);
+            _db.Flight.Remove(flight);
+            _db.SaveChanges();
+        }
 
-        public DateTime? ArrivalTime
-        //{
-        //    get
-        //    {
-        //        if (ArrivalTime < (DateTime)SqlDateTime.MinValue)
-        //            ArrivalTime = null;
-        //        return ArrivalTime;
-        //    }
-        //    set
-        //    { ArrivalTime = value; }
-        //}
-             { get; set; }
+        public Flight GetFlightById(int id)
+        {
+            var res = _db.Flight.FirstOrDefault(x => x.Id == id);
+            return res;
+        }
 
-    public string CityFrom
-        { get; set; }
-
-
-        public string CityTo
-        { get; set; }
-
-
-        public DateTime? DepartureTime
-        //{
-        //    get
-        //    {
-        //        if (DepartureTime < (DateTime)SqlDateTime.MinValue)
-        //            DepartureTime = null;
-        //        return DepartureTime;
-        //    }
-        //    set
-        //    { DepartureTime = value; }
-        //}
-                     { get; set; }
-
-
-
-    public int Id
-        { get; set; }
-
-
-        public string Number
-        { get; set; }
-
-
-        public List<IPassenger> Passenger
-        { get; set; }
-
-
-        public ITerminal Terminal
-        { get; set; }
     }
     }

@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllFlights</title>
+</head>
+<body>
+    <div> 
+            @{
+                foreach (var flight in Model)
+                {
+                    <div>@flight.Number</div>
+                    <div>@flight.DepartureTime</div>
+                    <div>@flight.ArrivalTime</div>
+                    <div>@flight.CityFrom</div>
+                    <div>@flight.CityTo</div>
+                }
+
+            }
+    </div>
+</body>
+</html>
