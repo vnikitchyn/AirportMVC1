@@ -6,7 +6,7 @@ using AirportMVC1.Models.entity;
 using AirportMVC1.Models.Repositories;
 using AirportMVC1.Models;
 using System.Data.Entity;
-
+using System.Data.SqlTypes;
 
 namespace AirportMVC1.Models.Repositories
 {
@@ -41,10 +41,20 @@ namespace AirportMVC1.Models.Repositories
 
 
 
-        public DateTime ArrivalTime
-        { get; set; }
+        public DateTime? ArrivalTime
+        //{
+        //    get
+        //    {
+        //        if (ArrivalTime < (DateTime)SqlDateTime.MinValue)
+        //            ArrivalTime = null;
+        //        return ArrivalTime;
+        //    }
+        //    set
+        //    { ArrivalTime = value; }
+        //}
+             { get; set; }
 
-        public string CityFrom
+    public string CityFrom
         { get; set; }
 
 
@@ -52,11 +62,22 @@ namespace AirportMVC1.Models.Repositories
         { get; set; }
 
 
-        public DateTime DepartureTime
-        { get; set; }
+        public DateTime? DepartureTime
+        //{
+        //    get
+        //    {
+        //        if (DepartureTime < (DateTime)SqlDateTime.MinValue)
+        //            DepartureTime = null;
+        //        return DepartureTime;
+        //    }
+        //    set
+        //    { DepartureTime = value; }
+        //}
+                     { get; set; }
 
 
-        public int Id
+
+    public int Id
         { get; set; }
 
 

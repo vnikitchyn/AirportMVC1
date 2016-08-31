@@ -9,10 +9,19 @@ namespace AirportMVC1.Models.entity
     {
          int Id { get; set; }
          string Number { get; set; }
-         DateTime ArrivalTime { get; set; }
-         DateTime DepartureTime { get; set; }
-         string CityFrom { get; set; }
-         string CityTo { get; set; }
+         DateTime? ArrivalTime
+        {
+            get; set;
+        }
+
+        DateTime? DepartureTime
+        {
+            get; set;
+        }
+
+        
+        string CityFrom { get; set; }
+        string CityTo { get; set; }
         
          ITerminal Terminal {get; set;}
          List <IPassenger> Passenger { get; set; }

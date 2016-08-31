@@ -37,8 +37,8 @@ namespace AirportMVC1.Controllers
         private void BuildDefaultFlights()
         {
             var flightRepo = new FlightRepository();
-            var f1 = new FlightRepository { Id = 1, Number = "3342", CityFrom = "Kyiv", CityTo = "Antalia" };
-            var f2 = new FlightRepository { Id = 2, Number = "3332", CityFrom = "Kyiv", CityTo = "Stambul" };
+            var f1 = new FlightRepository {  Number = "3342", CityFrom = "Kyiv", CityTo = "Antalia" };
+            var f2 = new FlightRepository {  Number = "3332", CityFrom = "Kyiv", CityTo = "Stambul" };
 
             flightRepo.AddFlight(f1);
             flightRepo.AddFlight(f2);
