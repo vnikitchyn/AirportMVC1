@@ -15,14 +15,10 @@
             @{
                 foreach (var flight in Model)
                 {
-                    <div>@flight.Number</div>
-                    <div>@flight.DepartureTime</div>
-                    <div>@flight.ArrivalTime</div>
-                    <div>@flight.CityFrom</div>
-                    <div>@flight.CityTo</div>
-                }
-
+                    <div>@flight.ToString()</div>
+                                 }
             }
     </div>
 </body>
 </html>
+

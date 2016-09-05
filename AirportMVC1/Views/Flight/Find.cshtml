@@ -1,16 +1,17 @@
-﻿@model List<AirportMVC1.Models.entity.Flight>
-
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Find";
 }
 
-<h2>Index</h2>
-<div>@Html.ActionLink("Create new","Create","Flight")</div>
-<div>@Html.ActionLink("Show all", "AllFlights", "Flight")</div>
-<div>@Html.ActionLink("Find by Number", "Find", "Flight")</div>
+<h2>Find</h2>
+
+<form>
+    <input />  
+</form>
 
 <div>
-    @{ 
+
+    @{
         foreach (var flight in Model)
         {
             <div>Number: @flight.Number</div>
@@ -22,7 +23,6 @@
             <div>Departure time: @flight.TimeDeparture</div>
             <div>Arrival expected at: @flight.TimeExpected</div>
             <div>Real arrival time: @flight.TimeArrival</div>
-            <div>@Html.ActionLink("Update", "Update", new {id = flight.FlightId }) @Html.ActionLink("Delete", "Delete", new { id = flight.FlightId })</div>         
         }
     }
 </div>

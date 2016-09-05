@@ -10,9 +10,11 @@ namespace AirportMVC1.Models
 {
     public class AirportContext : DbContext
 
-    {
-       public DbSet <Terminal> Terminal { get; set; }
-        public DbSet<Flight> Flight { get; set; }
-        public DbSet<Passenger> Passenger { get; set; }
+    
+    {     
+        public DbSet<Flight> Flights { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
+
     }
 }

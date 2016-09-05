@@ -20,6 +20,32 @@ namespace AirportMVC1.Controllers
             return View(_flights);
         }
 
+        //[HttpPost]
+        //public ActionResult Find(int number)
+        //{
+        //    List<Flight> _flights;
+        //    _flights = Repository.FindByNumberWithPassengerAndTicket(number);
+        //    return View(_flights);
+        //}
+
+        [HttpGet]
+        public ActionResult Find(int number)
+        {
+            if (number == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+                List<Flight> _flights;
+                _flights = Repository.FindByNumberWithPassengerAndTicket(number);
+                return View(_flights);
+            }
+        }
+
+
+
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -59,32 +85,9 @@ namespace AirportMVC1.Controllers
         {
             List<Flight> _flights;
             _flights = Repository.Get();
-            if (_flights.Count == 0)
-            {
-                BuildDefaultFlights();          
-                    }
-
             return View(_flights);
         }
 
-        private List <Flight> GetDefaultFlights()
-        {
-            return new List<Flight>()
-            {
-                new Flight {Id=1, Number="3342", CityFrom ="Kyiv", CityTo="Antalia" },
-                new Flight {Id=2, Number="3332", CityFrom ="Kyiv", CityTo="Stambul" }
-            };
-        }
-
-        private void BuildDefaultFlights()
-        {
-            var flightRepo = new FlightRepository();
-            var f1 = new Flight {  Number = "3342", CityFrom = "Kyiv", CityTo = "Antalia" };
-            var f2 = new Flight {  Number = "3332", CityFrom = "Kyiv", CityTo = "Stambul" };
-
-            flightRepo.Add(f1);
-            flightRepo.Add(f2);
-        }
 
     }
 }

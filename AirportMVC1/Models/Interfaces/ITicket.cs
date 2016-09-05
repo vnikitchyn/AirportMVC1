@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirportMVC1.Models.Interfaces
 {
-    interface ITerminal
+    interface ITicket
     {
     }
 }
