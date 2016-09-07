@@ -195,6 +195,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Airport1.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -254,11 +255,13 @@
     <Content Include="Views\Flight\Find.cshtml" />
     <Content Include="Views\Flight\Update.cshtml" />
     <Content Include="Views\Flight\Create.cshtml" />
+    <Content Include="Views\Flight\Show.cshtml" />
+    <Content Include="Views\Flight\ShowFlight.cshtml" />
+    <Content Include="Views\Passenger\All.cshtml" />
+    <Content Include="Views\Ticket\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Passenger\" />
-    <Folder Include="Views\Ticket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,15 +1,22 @@
 ﻿@model List<AirportMVC1.Models.entity.Flight>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Flights list";
 }
 
 <h2>Index</h2>
 <div>@Html.ActionLink("Create new","Create","Flight")</div>
-<div>@Html.ActionLink("Show all", "AllFlights", "Flight")</div>
+<div>@Html.ActionLink("Show all flights", "AllFlights", "Flight")</div>
+<div>@Html.ActionLink("Show all passengers", "All", "Passenger")</div>
+<div>@Html.ActionLink("Show all tickets", "All", "Ticket")</div>
+
 <div>@Html.ActionLink("Find by Number", "Find", "Flight")</div>
 
+
+<br>
 <div>
+
+
     @{ 
         foreach (var flight in Model)
         {

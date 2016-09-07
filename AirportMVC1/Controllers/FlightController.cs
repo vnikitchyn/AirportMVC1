@@ -26,23 +26,73 @@ namespace AirportMVC1.Controllers
         //    List<Flight> _flights;
         //    _flights = Repository.FindByNumberWithPassengerAndTicket(number);
         //    return View(_flights);
+
         //}
 
         [HttpGet]
-        public ActionResult Find(int number)
+        public ActionResult Find()
         {
-            if (number == null)
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Find( string numberS)
+        {
+
+            return RedirectToAction("ShowFlight", "Flight", new { numberS = Request.Form["number"] });
+
+        }
+
+
+
+        public ActionResult ShowFlight(string numberS)
+        {
+            int number;
+            int.TryParse(numberS, out number);
+
+            if (number == 0)
             {
-                return View("Error");
+                return View("Such number does not exist");
             }
             else
             {
-                List<Flight> _flights;
-                _flights = Repository.FindByNumberWithPassengerAndTicket(number);
-                return View(_flights);
+                List <Flight> flights;
+                flights = Repository.FindByNumberOnlyFlight(number);
+                return View(flights);
             }
         }
 
+        public ActionResult Show(string numberS)
+        {
+            int number;
+            int.TryParse(numberS, out number);
+
+            if (number == 0)
+            {
+                return View("Such number does not exist");
+            }
+            else
+            {
+                Ticket ticket;
+                ticket = Repository.FindByNumberWithPassengerAndTicket2(number);
+                return View(ticket);
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult FindFull()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FindFull(string numberS)
+        {
+
+            return RedirectToAction("Show", "Flight", new { numberS = Request.Form["number"] });
+
+        }
 
 
 
@@ -50,6 +100,13 @@ namespace AirportMVC1.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Flight flight)  //FormCollection collection
+        {
+            Repository.Add(flight);
+            return RedirectToAction("Index", "Flight"); //"AllFlights", "Flight"
         }
 
         [HttpGet]
@@ -73,13 +130,6 @@ namespace AirportMVC1.Controllers
             return RedirectToAction("Index", "Flight");
         }
 
-
-        [HttpPost]
-        public ActionResult Create(Flight flight)  //FormCollection collection
-        {
-            Repository.Add(flight);
-            return RedirectToAction("AllFlights","Flight");
-        }
 
         public ActionResult Index()
         {

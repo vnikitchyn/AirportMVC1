@@ -14,14 +14,41 @@ namespace AirportMVC1.Models.Repositories
     {
 
         public static List<Ticket> TicketsList { get; set; }
-        DbContext _db;
+        AirportContext _db;
 
         public TicketRepository(){
             _db = new AirportContext();
             }
 
 
-        internal static void AddTickets(List<Ticket> tickets)
+
+        internal  List<Flight> AllFlightsToList()
+        {
+            using (var db = new AirportContext())
+            {
+                return db.Flights.ToList();
+            }
+
+        }
+        internal  List<Passenger> AllPassengersToList()
+        {
+            using (var db = new AirportContext())
+            {
+                return db.Passengers.ToList();
+            }
+
+        }
+
+        internal  List<Ticket> AllTicketsToList()
+        {
+            using (var db = new AirportContext())
+            {
+                return db.Tickets.ToList();
+            }
+
+        }
+
+        internal  void AddTickets(List<Ticket> tickets)
         {
             using (var db = new AirportContext())
             {
@@ -38,7 +65,7 @@ namespace AirportMVC1.Models.Repositories
         }
 
 
-        internal static void AddTicket(Ticket ticket) // worked method!
+        internal  void AddTicket(Ticket ticket) // worked method!
         {
             using (var db = new AirportContext())
             {
@@ -58,7 +85,7 @@ namespace AirportMVC1.Models.Repositories
         }
 
 
-        internal static void AddTicket(Ticket ticket, int flightNumber) // worked method!
+        internal  void AddTicket(Ticket ticket, int flightNumber) // worked method!
         {
             using (var db = new AirportContext())
             {
@@ -81,7 +108,7 @@ namespace AirportMVC1.Models.Repositories
         }
 
 
-        internal static void PriceMore(double price) //IComparer for sorting
+        internal  void PriceMore(double price) //IComparer for sorting
         {
             bool find = false;
             PriceCompare<Ticket> pCompare = new PriceCompare<Ticket>();
@@ -102,7 +129,7 @@ namespace AirportMVC1.Models.Repositories
             }
         }
 
-        internal static void PriceLess(double price) //IComparable for sorting
+        internal  void PriceLess(double price) //IComparable for sorting
         {
             bool find = false;
             TicketsList.Sort();
@@ -120,6 +147,42 @@ namespace AirportMVC1.Models.Repositories
             {
             }
         }
+
+        public Ticket GetById(int id)
+        {
+            var res = _db.Tickets.FirstOrDefault(n => n.PassId == id);
+            return res;
+        }
+
+        public void Delete(int id)
+        {
+            var t = GetById(id);
+            _db.Tickets.Remove(t);
+            _db.SaveChanges();
+        }
+
+        public void Add(Ticket t)
+        {
+            _db.Tickets.Add(t);
+            _db.SaveChanges();
+
+        }
+
+        public void Update(Ticket t)
+        {
+            var _t = _db.Tickets.Find(t.PassId);
+            if (_t != null)
+            {
+                _db.Entry(_t).CurrentValues.SetValues(t);
+                _db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Current entity does not exists");
+            }
+        }
+
+
     }
 
 
@@ -135,4 +198,8 @@ namespace AirportMVC1.Models.Repositories
             else return 0;
         }
     }
+
+   
+
+
 }

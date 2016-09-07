@@ -24,7 +24,7 @@ namespace AirportMVC1
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/Airport1.css",
                       "~/Content/site.css"));
         }
     }

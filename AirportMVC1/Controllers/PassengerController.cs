@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AirportMVC1.Models.entity;
+using AirportMVC1.Models.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,81 +11,50 @@ namespace AirportMVC1.Controllers
     public class PassengerController : Controller
     {
         // GET: Passenger
-        public ActionResult Index()
+        private PassengerRepository Repository = new PassengerRepository();
+
+
+        public ActionResult All()
         {
-            return View();
+            List<Passenger> pas;
+            pas = Repository.AllPassengersToList();
+            return View(pas);
         }
 
-        // GET: Passenger/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public ActionResult Update(int id)
         {
-            return View();
+            Passenger p = Repository.GetById(id);
+            return View(p);
         }
 
-        // GET: Passenger/Create
+        [HttpPost]
+        public ActionResult Update(Passenger p)
+        {
+            Repository.Update(p);
+            return RedirectToAction("Index", "Flight");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            Repository.Delete(id);
+            return RedirectToAction("Index", "Flight");
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Passenger/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Passenger p)  //FormCollection collection
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Repository.Add(p);
+            return RedirectToAction("Index", "Flight"); //"AllFlights", "Flight"
         }
 
-        // GET: Passenger/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: Passenger/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Passenger/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Passenger/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

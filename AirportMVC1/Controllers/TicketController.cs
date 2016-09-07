@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AirportMVC1.Models.entity;
+using AirportMVC1.Models.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,82 +10,47 @@ namespace AirportMVC1.Controllers
 {
     public class TicketController : Controller
     {
-        // GET: Ticket
-        public ActionResult Index()
+
+        private TicketRepository Repository = new TicketRepository();
+        public ActionResult All()
         {
-            return View();
+            List<Ticket> pas;
+            pas = Repository.AllTicketsToList();
+            return View(pas);
         }
 
-        // GET: Ticket/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public ActionResult Update(int id)
         {
-            return View();
+            Ticket p = Repository.GetById(id);
+            return View(p);
         }
 
-        // GET: Ticket/Create
+        [HttpPost]
+        public ActionResult Update(Ticket p)
+        {
+            Repository.Update(p);
+            return RedirectToAction("Index", "Flight");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            Repository.Delete(id);
+            return RedirectToAction("Index", "Flight");
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Ticket/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Ticket p)  //FormCollection collection
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Ticket/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Ticket/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Ticket/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Ticket/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Repository.Add(p);
+            return RedirectToAction("Index", "Flight"); //"AllFlights", "Flight"
         }
     }
 }

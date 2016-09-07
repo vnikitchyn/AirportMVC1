@@ -1,0 +1,22 @@
+﻿@model List <AirportMVC1.Models.entity.Ticket>
+
+@{
+    ViewBag.Title = "All tickets";
+}
+
+<h2>All tickets</h2>
+
+
+<div>
+    @foreach (var t in Model)
+    {
+        <h4>Ticket number @t.Number</h4>
+        <div>Place @t.Place</div>
+        <div>Price @t.Price</div>
+        <div>@Html.ActionLink("Update", "Update", new { id = t.TicketId }) @Html.ActionLink("Delete", "Delete", new { id = t.TicketId })</div>
+        <hr/>
+    }
+</div>
+<p>
+    @Html.ActionLink("Back to Flights list", "Index")
+</p>

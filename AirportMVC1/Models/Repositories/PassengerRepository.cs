@@ -13,15 +13,15 @@ namespace AirportMVC1.Models.Repositories
     {
         internal static List<Passenger> passList = new List<Passenger>();
 
-        DbContext _db;
-        
+        AirportContext _db;
+
         public PassengerRepository()
         {
             _db = new AirportContext();
         }
 
 
-        internal static List<Flight> AllFlightsToList()
+        internal  List<Flight> AllFlightsToList()
         {
             using (var db = new AirportContext())
             {
@@ -29,7 +29,7 @@ namespace AirportMVC1.Models.Repositories
             }
             
         }
-        internal static List<Passenger> AllPassengersToList()
+        internal  List<Passenger> AllPassengersToList()
         {
             using (var db = new AirportContext())
             {
@@ -38,7 +38,7 @@ namespace AirportMVC1.Models.Repositories
          
         }
 
-        internal static List<Ticket> AllTicketsToList()
+        internal  List<Ticket> AllTicketsToList()
         {
             using (var db = new AirportContext())
             {
@@ -48,7 +48,7 @@ namespace AirportMVC1.Models.Repositories
         }
 
 
-        internal static IEnumerable FindSQLPassengerOnly(string passport)
+        internal  IEnumerable FindSQLPassengerOnly(string passport)
         {
             IEnumerable<Passenger> filtered =
               from passenger in AllPassengersToList()
@@ -57,7 +57,7 @@ namespace AirportMVC1.Models.Repositories
             return filtered;
         }
 
-        internal static IEnumerable FindSQLPassengerOnly(string name, string surname)
+        internal  IEnumerable FindSQLPassengerOnly(string name, string surname)
         {
             IEnumerable<Passenger> filtered =
               from passenger in AllPassengersToList()
@@ -65,5 +65,39 @@ namespace AirportMVC1.Models.Repositories
               select passenger;
             return filtered;
         }
+
+        public Passenger GetById(int id)
+        {
+            var res = _db.Passengers.FirstOrDefault(n => n.PassId == id);                
+            return res;
+        }
+
+        public void Delete(int id)
+        {
+            var p = GetById (id);
+            _db.Passengers.Remove(p);
+            _db.SaveChanges();
+        }
+
+        public void Update(Passenger p)
+        {
+            var _p = _db.Passengers.Find(p.PassId);
+            if (_p != null)
+            {
+                _db.Entry(_p).CurrentValues.SetValues(p);
+                _db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Current entity does not exists");
+            }
+        }
+        public void Add(Passenger p)
+        {
+            _db.Passengers.Add(p);
+            _db.SaveChanges();
+
+        }
+
     }
 }

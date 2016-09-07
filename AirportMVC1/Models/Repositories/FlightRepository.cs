@@ -55,13 +55,63 @@ namespace AirportMVC1.Models.Repositories
             }
         }
 
+
+        public List <Flight> FindByNumberOnlyFlight(int number)
+        {
+            var flights = from f in AllFlightsToList()
+                          where f.Number == number
+                          select f;
+            return flights.ToList<Flight>();
+
+        }
+
+
+
+        public Ticket  FindByNumberWithPassengerAndTicket2(int number)
+        {
+            IEnumerable<Ticket> flickets =
+                from t in AllTicketsToList()
+                join f in AllFlightsToList() on t.FlightId equals f.FlightId
+                join p in AllPassengersToList() on t.PassId equals p.PassId
+                where f.Number == number
+                select new Ticket
+                {
+                    Flight = f, Passenger = p
+                    //FlightNumber = f.Number,
+                    //f.Airline,
+                    //f.PortArrival,
+                    //f.PortDeparture,
+                    //f.Status,
+                    //f.Terminal,
+                    //f.Gate,
+                    //Departure = f.TimeDeparture,
+                    //ETA = f.TimeExpected,
+                    //ATA = f.TimeArrival,
+                    //t.Price,
+                    //TicketNumber = t.Number,
+                    //t.Place,
+                    //p.Name,
+                    //p.Surname,
+                    //FullName = string.Format("{0} {1}", p.Name, p.Surname),
+                    //p.Passport
+                };
+            foreach (Ticket flicket in flickets)
+            {
+                //Console.WriteLine("Flights with tikcets: {0} \n", flicket.ToString());
+            }
+            return flickets.First();
+        }
+
+
+
+
         public dynamic FindByNumberWithPassengerAndTicket (int number)
         {
             IEnumerable<dynamic> flickets =
                 from t in AllTicketsToList()
                 join f in AllFlightsToList() on t.FlightId equals f.FlightId
                 join p in AllPassengersToList() on t.PassId equals p.PassId
-                where t.Number == number
+                where f.Number == number
                 select new
                 {
                     FlightNumber = f.Number,
