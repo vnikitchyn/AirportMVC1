@@ -259,6 +259,8 @@
     <Content Include="Views\Flight\ShowFlight.cshtml" />
     <Content Include="Views\Passenger\All.cshtml" />
     <Content Include="Views\Ticket\All.cshtml" />
+    <Content Include="Views\Passenger\Update.cshtml" />
+    <Content Include="Views\Ticket\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

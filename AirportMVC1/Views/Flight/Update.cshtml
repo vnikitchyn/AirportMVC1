@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TimeArrival, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TimeArrival, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TimeArrival, new { htmlAttributes = new { @class = "form-control", @type = "datetime" } })
                 @Html.ValidationMessageFor(model => model.TimeArrival, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,13 +25,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TimeDeparture, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TimeDeparture, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TimeDeparture, new { htmlAttributes = new { @class = "form-control", @type = "datetime" } })
                 @Html.ValidationMessageFor(model => model.TimeDeparture, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TimeExpected, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TimeExpected, htmlAttributes: new { @class = "control-label col-md-2", @type = "datetime" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TimeExpected, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TimeExpected, "", new { @class = "text-danger" })
@@ -95,7 +95,6 @@
         </div>
 
         @Html.HiddenFor(model => model.FlightId)
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

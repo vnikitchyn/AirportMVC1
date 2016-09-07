@@ -10,7 +10,6 @@ namespace AirportMVC1.Controllers
 {
     public class TicketController : Controller
     {
-
         private TicketRepository Repository = new TicketRepository();
         public ActionResult All()
         {
