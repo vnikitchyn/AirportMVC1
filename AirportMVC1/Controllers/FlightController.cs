@@ -43,8 +43,6 @@ namespace AirportMVC1.Controllers
 
         }
 
-
-
         public ActionResult ShowFlight(string numberS)
         {
             int number;
@@ -79,7 +77,6 @@ namespace AirportMVC1.Controllers
             }
         }
 
-
         [HttpGet]
         public ActionResult FindFull()
         {
@@ -91,10 +88,7 @@ namespace AirportMVC1.Controllers
         {
 
             return RedirectToAction("Show", "Flight", new { numberS = Request.Form["number"] });
-
         }
-
-
 
         [HttpGet]
         public ActionResult Create()
@@ -137,7 +131,5 @@ namespace AirportMVC1.Controllers
             _flights = Repository.Get();
             return View(_flights);
         }
-
-
     }
 }

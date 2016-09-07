@@ -3,33 +3,13 @@
 @{
     ViewBag.Title = "Flights list";
 }
-
-<h2>Index</h2>
+<h2>Airport management console:</h2>
 <div>@Html.ActionLink("Create new","Create","Flight")</div>
 <div>@Html.ActionLink("Show all flights", "AllFlights", "Flight")</div>
 <div>@Html.ActionLink("Show all passengers", "All", "Passenger")</div>
 <div>@Html.ActionLink("Show all tickets", "All", "Ticket")</div>
-
 <div>@Html.ActionLink("Find by Number", "Find", "Flight")</div>
-
-
 <br>
 <div>
-
-
-    @{ 
-        foreach (var flight in Model)
-        {
-            <div>Number: @flight.Number</div>
-            <div>Airline: @flight.Airline</div>
-            <div>Status: @flight.Status</div>
-            <div>port of arrival: @flight.PortArrival</div>
-            <div>port of departure: @flight.PortDeparture</div>
-            <div>Terminal: @flight.Terminal</div>
-            <div>Departure time: @flight.TimeDeparture</div>
-            <div>Arrival expected at: @flight.TimeExpected</div>
-            <div>Real arrival time: @flight.TimeArrival</div>
-            <div>@Html.ActionLink("Update", "Update", new {id = flight.FlightId }) @Html.ActionLink("Delete", "Delete", new { id = flight.FlightId })</div>         
-        }
-    }
+ 
 </div>
